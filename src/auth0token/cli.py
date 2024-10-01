@@ -1,3 +1,5 @@
+# pylint: disable=consider-using-with:
+
 from multiprocessing import Process
 from subprocess import DEVNULL, Popen
 from time import sleep
@@ -8,13 +10,12 @@ from click import ClickException
 from dotenv import load_dotenv
 
 from auth0token.auth0 import PORT, SERVER, get_authorization_endpoint
-from auth0token.server import callback_called
 
 
 @click.group(context_settings={"help_option_names": ["-h", "--help"]})
 @click.version_option(package_name="auth0token", prog_name="auth0token")
 def auth0token() -> None:
-    """Auth0 token utilities."""
+    """Auth0 JWT token utilities."""
 
 
 @auth0token.command()
@@ -29,16 +30,26 @@ def auth0token() -> None:
 @click.option(
     "--env",
     "-e",
-    "envfile",
-    metavar="<envfile>",
+    "env_file",
+    metavar="<env-file>",
     default=".env",
     help="Path to env file on disk, default '.env'",
 )
-def retrieve(wait_sec: int, envfile: str) -> None:
+def retrieve(wait_sec: int, env_file: str) -> None:
     """
-    Retrieve an Auth0 token for an application and API.
+    Retrieve an Auth0 JWT access token for an application and API.
 
-    The env file must contain the following variables:
+    This coordinates the OIDC Authorization Code flow, submitting the correct
+    requests to Auth0 and handling the required callback interaction.  This is
+    done by starting an ephemeral uvicorn server to provide the callback
+    endpoint and a private Firefox browser to handle the web UI aspects of the
+    flow.
+
+    Run this command, wait for Firefox to start, log in with your credentials,
+    and then capture the access token out of the browser window.  Then quit
+    Firefox.
+
+    The environment file must contain the following variables:
 
         \b
         BASE_URI = "https://<tenant>.us.auth0.com"
@@ -47,37 +58,46 @@ def retrieve(wait_sec: int, envfile: str) -> None:
         CLIENT_ID = "<client-id>"
         CLIENT_SECRET = "<client-secret>"
 
-    If you have only one database connection, then the CONNECTION
+    If you have only one database connection in Auth0, then the CONNECTION
     variable isn't necessary.
     """
-    load_dotenv(envfile)
+    load_dotenv(env_file)
 
     server = Process(
         target=uvicorn.run,
-        args=["auth0token.server:APP"],
-        kwargs={"host": SERVER, "port": PORT, "log_level": "error", "env_file": envfile},
+        args=["auth0token.api:APP"],
+        kwargs={
+            "host": SERVER,
+            "port": PORT,
+            "log_level": "error",
+            "env_file": env_file,
+            "limit_max_requests": 1,
+        },
         daemon=True,
     )
     server.start()
     sleep(1)
 
-    # TODO: create firefox profile auth0token
+    cmdline = ["firefox", "-CreateProfile", "auth0token"]
+    create = Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)
+    create.wait(5)
 
     cmdline = ["firefox", "-foreground", "-new-instance", "-P", "auth0token", "-private-window", get_authorization_endpoint()]
     Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)
 
+    # noinspection PyUnresolvedReferences
+    # make MyPy happy; see https://github.com/pallets/click/issues/2626
+    bar: click._termui_impl.ProgressBar[int]
+
     with click.progressbar(length=wait_sec, label=f"Waiting {wait_sec} seconds for login process") as bar:
         attempts = 0
-        while attempts < wait_sec:
-            click.echo("inside progressbar, CALLED=%s" % callback_called())
-            if callback_called():
-                bar.update(wait_sec)
-                break
-            else:
-                attempts += 1
-                bar.update(1)
-                sleep(1)
-    if not callback_called():
-        raise ClickException(f"Login process did not complete after {wait_sec} seconds")
+        while server.is_alive():
+            attempts += 1
+            if attempts >= wait_sec:
+                server.terminate()
+                raise ClickException(f"Login process did not complete after {wait_sec} seconds")
+            bar.update(1)
+            sleep(1)
+        bar.update(wait_sec)
 
-    server.terminate()
+    click.echo("Login process completed; check Firefox for the access token, and then quit")
