@@ -6,6 +6,14 @@ This project uses [Poetry](https://python-poetry.org/) to manage Python packagin
 
 A coding standard is enforced using [Black](https://pypi.org/project/black/), [isort](https://pypi.org/project/isort/) and [Pylint](https://pypi.org/project/pylint/).  Python 3 type hinting is validated using [MyPy](https://pypi.org/project/mypy/).
 
+## Supported Platforms
+
+I wrote this for use on my Macbook.  It may also work on Linux or Windows, but I haven't tested there.
+
+## Unit Tests
+
+This is a quick-and-dirty hack, not production code.  There are no unit tests. I tested the code manually while trying to figure out a process that would work.
+
 ## Pre-Commit Hooks
 
 We rely on pre-commit hooks to ensure that the code is properly-formatted,
@@ -59,60 +67,6 @@ To upgrade this installation later, use:
 pipx upgrade --include-injected poetry
 ```
 
-### Debian
-
-First, install Python 3 and related tools:
-
-```
-sudo apt-get install python3 python-is-python3 pipx
-```
-
-Once that's done, make sure that the `python` interpreter on your `$PATH` is
-Python 3.
-
-Finally, install Poetry itself and then verify your installation:
-
-```
-pipx install poetry
-pipx inject poetry poetry-dynamic-versioning
-pipx list --include-injected
-```
-
-To upgrade this installation later, use:
-
-```
-pipx upgrade --include-injected poetry
-```
-
-### Windows
-
-First, install Python 3 from your preferred source, either a standard
-installer or a meta-installer like Chocolatey.  Make sure the `python`
-on your `$PATH` is Python 3.
-
-Next, install pipx:
-
-```
-python -m pip install --user pipx
-```
-
-Finally, install Poetry itself and then verify your installation:
-
-```
-pipx install poetry
-pipx inject poetry poetry-dynamic-versioning
-pipx list --include-injected
-```
-
-To upgrade this installation later, use:
-
-```
-pipx upgrade --include-injected poetry
-```
-
-> _Note:_ The development environment (the `run` script, etc.) expects a bash
-> shell to be available.  On Windows, it works fine with the standard Git Bash.
-
 ## Developer Tasks
 
 The [`run`](run) script provides shortcuts for common developer tasks:
@@ -132,6 +86,10 @@ Basic tasks:
 - run checks: Run the code checkers
 - run build: Build artifacts in the dist/ directory
 - run suite: Run the complete test suite, as for the GitHub Actions CI build
+
+Additional tasks:
+
+- run release: Tag and release the code, triggering GHA to publish artifacts
 ```
 
 ## Integration with PyCharm
@@ -202,25 +160,6 @@ the Pylint and MyPy errors clickable.  To set up external tools, go to PyCharm
 settings and find **Tools > External Tools**.  Add the tools as described
 below.
 
-#### Linux or MacOS
-
-On Linux or MacOS, you can set up the external tools to invoke the `run` script
-directly.
-
-##### Shell Environment
-
-For this to work, it's important that tools like `poetry` are on the system
-path used by PyCharm.  On Linux, depending on how you start PyCharm, your
-normal shell environment may or may not be inherited.  For instance, I had to
-adjust the target of my LXDE desktop shortcut to be the script below, which
-sources my profile before running the `pycharm.sh` shell script:
-
-```sh
-#!/bin/bash
-source ~/.bash_profile
-/opt/local/lib/pycharm/pycharm-community-2020.3.2/bin/pycharm.sh
-```
-
 ##### Format Code
 
 |Field|Value|
@@ -269,62 +208,6 @@ source ~/.bash_profile
 |Make console active on message in stderr|_Checked_|
 |Output filters|`$FILE_PATH$:$LINE$:$COLUMN.*`|
 
-#### Windows
-
-On Windows, PyCharm has problems invoking the `run` script.  The trick is to
-invoke the Bash interpreter and tell it to invoke the `run` script.  The
-examples below assume that you have installed Git Bash in its standard location
-under `C:\Program Files\Git`.  If it is somewhere else on your system, just
-change the path for `bash.exe`.
-
-##### Format Code
-
-|Field|Value|
-|-----|-----|
-|Name|`Format Code`|
-|Description|`Run the code formatters`|
-|Group|`Developer Tools`|
-|Program|`powershell.exe`|
-|Arguments|`& 'C:\Program Files\Git\bin\bash.exe' -l "./run" format | Out-String`|
-|Working directory|`$ProjectFileDir$`|
-|Synchronize files after execution|_Checked_|
-|Open console for tool outout|_Checked_|
-|Make console active on message in stdout|_Unchecked_|
-|Make console active on message in stderr|_Unchecked_|
-|Output filters|_Empty_|
-
-##### Run MyPy Checks
-
-|Field|Value|
-|-----|-----|
-|Name|`Run MyPy Checks`|
-|Description|`Run the MyPy code checks`|
-|Group|`Developer Tools`|
-|Program|`powershell.exe`|
-|Arguments|`& 'C:\Program Files\Git\bin\bash.exe' -l "./run" mypy | Out-String`|
-|Working directory|`$ProjectFileDir$`|
-|Synchronize files after execution|_Unchecked_|
-|Open console for tool outout|_Checked_|
-|Make console active on message in stdout|_Checked_|
-|Make console active on message in stderr|_Checked_|
-|Output filters|`$FILE_PATH$:$LINE$:$COLUMN$:.*`|
-
-##### Run Pylint Checks
-
-|Field|Value|
-|-----|-----|
-|Name|`Run Pylint Checks`|
-|Description|`Run the Pylint code checks`|
-|Group|`Developer Tools`|
-|Program|`powershell.exe`|
-|Arguments|`& 'C:\Program Files\Git\bin\bash.exe' -l "./run" pylint | Out-String`|
-|Working directory|`$ProjectFileDir$`|
-|Synchronize files after execution|_Unchecked_|
-|Open console for tool outout|_Checked_|
-|Make console active on message in stdout|_Checked_|
-|Make console active on message in stderr|_Checked_|
-|Output filters|`$FILE_PATH$:$LINE$:$COLUMN.*`|
-
 ## Release Process
 
 ### Documentation
@@ -360,8 +243,4 @@ Run the release command:
 This command updates `NOTICE` and `Changelog` to reflect the release version
 and release date, commits those changes, tags the code, and pushes to GitHub.
 The new tag triggers a GitHub Actions build that runs the test suite, generates
-the artifacts, publishes to PyPI, and finally creates a release from the tag.
-
-> _Note:_ This process relies on a PyPI API token with upload permissions for
-> the project.  This token is stored in a GitHub Actions secret called
-> `PYPI_TOKEN`.
+the artifacts, and finally creates a release from the tag.
