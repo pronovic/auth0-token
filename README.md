@@ -21,7 +21,7 @@ for use on my Macbook, but it may work on other platforms.
 
 Requirements are minimal:
 
-- You must have Python >= 3.12 installed, plus [pipx](https://github.com/pypa/pipx)
+- You must have Python >= 3.11 installed, plus [pipx](https://github.com/pypa/pipx)
 - You must have Firefox installed and on your `$PATH`
 - Your Auth0 application (under **Applications > Applications**) must have the following allowed redirect URL:
 

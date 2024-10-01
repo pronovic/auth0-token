@@ -13,6 +13,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  linux-build-and-test:
+    name: "Linux"
+    uses: pronovic/gha-shared-workflows/.github/workflows/poetry-build-and-test.yml@v6
+    secrets: inherit
+    with:
+      matrix-os-version: "[ 'ubuntu-latest' ]"
+      matrix-python-version: "[ '3.11', '3.12' ]"
   macos-build-and-test:
     name: "MacOS"
     uses: pronovic/gha-shared-workflows/.github/workflows/poetry-build-and-test.yml@v6
@@ -25,8 +32,8 @@ jobs:
     name: "Release"
     if: github.ref_type == 'tag'
     uses: pronovic/gha-shared-workflows/.github/workflows/poetry-release.yml@v6
-    needs: [ macos-build-and-test ]
+    needs: [ linux-build-and-test ]
     secrets: inherit
     with:
-      python-version: "3.12"   # run release with oldest supported Python version
+      python-version: "3.11"   # run release with oldest supported Python version
       publish-pypi: false

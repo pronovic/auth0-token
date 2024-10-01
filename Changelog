@@ -1,4 +1,8 @@
+Version 0.1.1     unreleased
+
+	* Support Python 3.11 and 3.12.
+
 Version 0.1.0     01 Oct 2024
 
-	* Initial public release
+	* Initial public release.
 
