@@ -16,7 +16,8 @@ application right now, etc.
 
 This is a quick-and-dirty workaround to that problem, inspired by
 the [auth-code-flow](https://pypi.org/project/auth-code-flow/0.2.0/) tutorial.
-It's not pretty, but it does work, and it does save time.
+It's not pretty, but it does work, and it does save time.  I've written it
+for use on my Macbook, but it may work on Linux or Windows.
 
 Requiements are minimal:
 
