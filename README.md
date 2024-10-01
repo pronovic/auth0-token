@@ -1,6 +1,7 @@
 # Auth0 JWT Token Utilities
 
 [![license](https://img.shields.io/pypi/l/auth0-token.svg)](https://github.com/pronovic/auth0-token/blob/master/LICENSE)
+[![python](https://img.shields.io/pypi/pyversions/auth0-token.svg)](https://pypi.org/project/auth0-token/)
 [![Test Suite](https://github.com/pronovic/auth0-token/workflows/Test%20Suite/badge.svg)](https://github.com/auth0-token/actions?query=workflow%3A%22Test+Suite%22)
 [![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 
@@ -17,19 +18,19 @@ application right now, etc.
 This is a quick-and-dirty workaround to that problem, inspired by
 the [auth-code-flow](https://pypi.org/project/auth-code-flow/0.2.0/) tutorial.
 It's not pretty, but it does work, and it does save time.  I've written it
-for use on my Macbook, but it may work on Linux or Windows.
+for use on my Macbook, but it may work on other platforms.
 
-Requiements are minimal:
+Requirements are minimal:
 
-- You must have Python >= 3.12 installed
+- You must have Python >= 3.12 installed, plus [pipx](https://github.com/pypa/pipx)
 - You must have Firefox installed and on your `$PATH`
-- Your Auth0 application (under **Applications > Applications**) must have the following as an allowed redirect URL:
+- Your Auth0 application (under **Applications > Applications**) must have the following allowed redirect URL:
 
 ```
 http://localhost:35000/localtoken/callback
 ```
 
-First, download install the wheel from the [latest release](https://github.com/pronovic/auth0-token/releases/latest)
+First, download the wheel from the [latest release](https://github.com/pronovic/auth0-token/releases/latest)
 and then install using pipx:
 
 ```
@@ -66,10 +67,10 @@ The `retrieve` command coordinates the OAuth2 Authorization Code Flow,
 submitting the correct requests to Auth0 and handling the required callback
 interaction.  This is done by starting an ephemeral uvicorn server to provide
 the callback endpoint and a private Firefox browser to handle the web UI
-aspects of the flow.  When the login flow is complete, the Firefox browser will
-contain your JWT access token.  Copy the token out of the browser and then
-quit.
+aspects of the flow.  When the login flow is complete, the Firefox browser 
+window will contain your JWT access token.  Copy the token out of the browser 
+and then quit.
 
-> **Note:** Annoyingly, it doesn't work very well to run the command multiple
+> _Note:_ Annoyingly, it doesn't work very well to run the command multiple
 > times if you don't quit Firefox in between &mdash; something to do with how
 > I'm starting Firefox in a new private window.
