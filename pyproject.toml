@@ -13,7 +13,6 @@ include = [
    { path = 'LICENSE', format = 'sdist' },
    { path = 'README.md', format = 'sdist' },
    { path = 'docs', format = 'sdist' },
-   { path = 'tests', format = 'sdist' },
 ]
 packages = [ 
    { include = "auth0token", from = "src" },
@@ -40,19 +39,15 @@ python = ">=3.12,<4"
 fastapi = "~0, >=0.103.2"
 uvicorn = "~0, >=0.23.2"
 python-dotenv = "^1.0.1"
-asyncio = "^3.4.3"
 click = "^8.1.7"
+requests = "^2.32.3"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.2"
-pytest-testdox = "^3.1.0"
-coverage = "^6.5.0"  # coveralls needs v6
 pylint = "^3.0.1"
 pre-commit = "^3.4.0"
-black = "^23.9.1"
+black = "^24.8.0"
 mypy = "^1.6.0"
 isort = "^5.12.0"
-coveralls = "^3.3.1"
 colorama = "~0, >=0.4.6"
 types-requests = "^2.32.0.20240914"
 

@@ -2,7 +2,7 @@
 
 ## Packaging and Dependencies
 
-This project uses [Poetry](https://python-poetry.org/) to manage Python packaging and dependencies.  Most day-to-day tasks (such as running unit tests from the command line) are orchestrated through Poetry.
+This project uses [Poetry](https://python-poetry.org/) to manage Python packaging and dependencies.  Most day-to-day tasks are orchestrated through Poetry.
 
 A coding standard is enforced using [Black](https://pypi.org/project/black/), [isort](https://pypi.org/project/isort/) and [Pylint](https://pypi.org/project/pylint/).  Python 3 type hinting is validated using [MyPy](https://pypi.org/project/mypy/).
 
@@ -127,19 +127,11 @@ Shortcuts for common developer tasks
 Basic tasks:
 
 - run install: Setup the virtualenv via Poetry and install pre-commit hooks
+- run outdated: Find top-level dependencies with outdated constraints
 - run format: Run the code formatters
 - run checks: Run the code checkers
 - run build: Build artifacts in the dist/ directory
-- run test: Run the unit tests
-- run test -c: Run the unit tests with coverage
-- run test -ch: Run the unit tests with coverage and open the HTML report
 - run suite: Run the complete test suite, as for the GitHub Actions CI build
-
-Additional tasks:
-
-- run docs: Build the Sphinx documentation for readthedocs.io
-- run docs -o: Build the Sphinx documentation and open in a browser
-- run release: Tag and release the code, triggering GHA to publish artifacts
 ```
 
 ## Integration with PyCharm
@@ -185,7 +177,7 @@ environment.
 ### Project Structure
 
 Go to the PyCharm settings and find the `auth0-token` project.  Under **Project
-Structure**, mark both `src` and `tests` as source folders.  In the **Exclude
+Structure**, mark `src` as a source folder.  In the **Exclude
 Files** box, enter the following:
 
 ```
@@ -200,21 +192,6 @@ in the list above.
 
 In the PyCharm settings, go to **Editor > Inspections** and be sure that the
 **Project Default** profile is selected.
-
-Unit tests are written using [Pytest](https://docs.pytest.org/en/latest/),
-and API documentation is written
-using [Google Style Python Docstring](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).  However, 
-neither of these is the default in PyCharm.  In the PyCharm settings, go to 
-**Tools > Python Integrated Tools**.  Under **Testing > Default test runner**, 
-select _pytest_.  Under **Docstrings > Docstring format**, select _Google_.
-
-### Running Unit Tests
-
-Right click on the `tests` folder in the project explorer and choose **Run
-'pytest in tests'**.  Make sure that all of the tests pass.  If you see a slightly
-different option (i.e. for "Unittest" instead of "pytest") then you probably 
-skipped the preferences setup discussed above.  You may need to remove the
-run configuration before PyCharm will find the right test suite.
 
 ### External Tools
 

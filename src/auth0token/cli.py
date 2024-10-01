@@ -13,7 +13,6 @@ from auth0token.auth0 import PORT, SERVER, get_authorization_endpoint
 
 
 @click.group(context_settings={"help_option_names": ["-h", "--help"]})
-@click.version_option(package_name="auth0token", prog_name="auth0token")
 def auth0token() -> None:
     """Auth0 JWT token utilities."""
 
