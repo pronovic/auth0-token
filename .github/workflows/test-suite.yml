@@ -20,6 +20,7 @@ jobs:
     with:
       matrix-os-version: "[ 'ubuntu-latest' ]"
       matrix-python-version: "[ '3.11', '3.12' ]"
+      enable-coveralls: false 
   macos-build-and-test:
     name: "MacOS"
     uses: pronovic/gha-shared-workflows/.github/workflows/poetry-build-and-test.yml@v6
