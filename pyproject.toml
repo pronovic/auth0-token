@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "auth0-token"
 version = "0.0.0" # published version is managed using Git tags (see below)
-description = "Retrieves Auth0 JWT tokens using the Authorization Code flow"
+description = "Auth0 JWT token utilities"
 authors = ["Kenneth Pronovici <pronovic@ieee.org>"]
 license = "Apache-2.0"
 readme = "PyPI.md"
