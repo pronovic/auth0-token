@@ -21,3 +21,12 @@ jobs:
       matrix-os-version: "[ 'macos-latest' ]"
       matrix-python-version: "[ '3.12' ]"  # only run MacOS tests on latest Python
       enable-coveralls: false 
+  release:
+    name: "Release"
+    if: github.ref_type == 'tag'
+    uses: pronovic/gha-shared-workflows/.github/workflows/poetry-release.yml@v6
+    needs: [ macos-build-and-test ]
+    secrets: inherit
+    with:
+      python-version: "3.12"   # run release with oldest supported Python version
+      publish-pypi: false
