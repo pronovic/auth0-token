@@ -62,14 +62,17 @@ Waiting 60 seconds for login process  [####################################]  10
 Login process completed; check Firefox for the access token, and then quit
 ```
 
-The `retrieve` command coordinates the OAuth2 Authorization Code Flow,
-submitting the correct requests to Auth0 and handling the required callback
-interaction.  This is done by starting an ephemeral uvicorn server to provide
-the callback endpoint and a private Firefox browser to handle the web UI
-aspects of the flow.  When the login flow is complete, the Firefox browser 
-window will contain your JWT access token.  Copy the token out of the browser 
-and then quit.
+The `retrieve` command coordinates the 
+OAuth2 [Authorization Code Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow), submitting
+the correct requests to Auth0 and handling the required callback interaction.
 
-> **Note:**_** Annoyingly, it doesn't work very well to run the command multiple
+This is done by starting an ephemeral uvicorn server to provide the callback
+endpoint, plus a private Firefox browser to handle the web UI aspects of the
+flow.  From within the script, we can identify that the login flow is complete,
+because the ephemeral uvicorn server will terminate after processing one
+request.  At this point, the Firefox browser window will contain a plaintext
+JWT access token.  Copy the token out of the browser and then quit.
+
+> **Note:** Annoyingly, it doesn't work very well to run the command multiple
 > times if you don't quit Firefox in between &mdash; something to do with how
 > I'm starting Firefox in a new private window.
