@@ -70,6 +70,6 @@ aspects of the flow.  When the login flow is complete, the Firefox browser will
 contain your JWT access token.  Copy the token out of the browser and then
 quit.
 
-> _Note:_ Annoyingly, it doesn't work very well to run the command multiple
+> **Note:** Annoyingly, it doesn't work very well to run the command multiple
 > times if you don't quit Firefox in between &mdash; something to do with how
 > I'm starting Firefox in a new private window.
