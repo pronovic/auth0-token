@@ -19,19 +19,24 @@ This is a quick-and-dirty workaround to that problem, inspired by
 the [auth-code-flow](https://pypi.org/project/auth-code-flow/0.2.0/) tutorial.
 It's not pretty, but it does work, and it does save time.
 
-The only requirement is that your Auth0 application must have the following URL
-as an allowed redirect URL:
+Requiements are minimal:
+
+- You must have Python >= 3.12 installed
+- You must have Firefox installed and on your `$PATH`
+- Your Auth0 application (under **Applications > Applications**) must have the following as an allowed redirect URL:
 
 ```
 http://localhost:35000/localtoken/callback
 ```
 
-Before going any further, follow the instructions in [DEVELOPER.md](DEVELOPER.md) 
-to initialize the development environment &mdash; install Python and Poetry,
-and then run `./run suite`.
+First, download install the wheel from the [latest release](https://github.com/pronovic/auth0-token/releases/latest)
+and then install using pipx:
 
-Assuming that went smoothly, your next step is to prepare an environment file
-(`.env`) that describes your Auth0 configuration:
+```
+pipx install auth0_token-0.1.0-py3-none-any.whl
+```
+
+Next, prepare an environment file (i.e. `envfile`) that describes your Auth0 configuration:
 
 ```bash
 BASE_URI = "https://my-tenant.us.auth0.com"
@@ -48,11 +53,11 @@ All of these things are easy to find in Auth0
 - for `my-api-audience`, substitute the _API Audience_ associated with your API (under **Applications > APIs**)
 - for `my-client-id` and `my-client-secret`, substitute the values from your application (under **Applications > Applications**)
 
-Once your `.env` file exists, you can run the `retrieve` command, which looks
+Once your environment file exists, you can run the `retrieve` command, which looks
 like this:
 
 ```
-$ poetry run auth0token retrieve 
+$ auth0token retrieve --env envfile
 Waiting 60 seconds for login process  [####################################]  100%          
 Login process completed; check Firefox for the access token, and then quit
 ```
