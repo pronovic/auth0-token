@@ -1,3 +1,9 @@
+Version 0.2.0     unreleased
+
+	* Kill any leftover Firefox windows when running retrieve.
+	* Add notes about the redirect URL to help output for retrieve.
+	* Document the 'auth0 test token' command, which is an alternative.
+
 Version 0.1.1     01 Oct 2024
 
 	* Support Python 3.11 and 3.12.
