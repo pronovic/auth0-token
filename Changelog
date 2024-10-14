@@ -1,4 +1,4 @@
-Version 0.3.0     unreleased
+Version 0.3.0     13 Oct 2024
 
 	* Add support for $ORGANIZATION_ID when running retrieve.
 	* Clarify when $CONNECTION is needed when running retrieve.
