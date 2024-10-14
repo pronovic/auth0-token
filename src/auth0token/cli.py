@@ -1,10 +1,11 @@
 # pylint: disable=consider-using-with:
-
+import os
 from multiprocessing import Process
 from subprocess import DEVNULL, Popen
 from time import sleep
 
 import click
+import psutil
 import uvicorn
 from click import ClickException
 from dotenv import load_dotenv
@@ -83,10 +84,20 @@ def retrieve(wait_sec: int, env_file: str) -> None:
     server.start()
     sleep(1)
 
+    # kill any existing Firefox opened by auth0token, which we identify by looking for indicators in the CLI
+    # annoyingly, if there is an existing window, then the new window below opens, but doesn't work properly
+    for process in psutil.process_iter():
+        if process.uids().real == os.getuid() and process.name() == "firefox":
+            if "-P auth0token -private-window" in " ".join(process.cmdline()):
+                process.kill()
+                click.echo("Closed existing auth0token Firefox window that was left open")
+
+    # create a new Firefox profile for use by auth0 token
     cmdline = ["firefox", "-CreateProfile", "auth0token"]
     create = Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)
     create.wait(5)
 
+    # open a new private Firefox window specfically for use in the login flow
     cmdline = ["firefox", "-foreground", "-new-instance", "-P", "auth0token", "-private-window", get_authorization_endpoint()]
     Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)
 

@@ -77,4 +77,6 @@ JWT access token.  Copy the token out of the browser and then quit.
 
 > **Note:** Annoyingly, it doesn't work very well to run the command multiple
 > times if you don't quit Firefox in between &mdash; something to do with how
-> I'm starting Firefox in a new private window.
+> I'm starting Firefox in a new private window.  To work around this, when you
+> run the `retrieve` command, any leftover Firefox window will be killed.
+> Other unrelated Firefox windows will be ignored.
