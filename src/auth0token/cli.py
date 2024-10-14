@@ -59,13 +59,27 @@ def retrieve(wait_sec: int, env_file: str) -> None:
 
         \b
         BASE_URI = "https://<tenant>.us.auth0.com"
-        CONNECTION = "<database-connection-name>"
         AUDIENCE = "<api-audience>"
         CLIENT_ID = "<client-id>"
         CLIENT_SECRET = "<client-secret>"
 
-    If you have only one database connection in Auth0, then the CONNECTION
-    variable isn't necessary.
+    There are two optional variables:
+
+        \b
+        CONNECTION = "<database-connection-name>"
+        ORGANIZATION_ID = "<organization-id>"
+
+    If you have your client configured with an organization prompt, then the
+    CONNECTION variable must be omitted.  If you have your client configured
+    with exactly one authentication data source, then the CONNECTION variable
+    is optional.  Otherwise, specify the name of the authentication data source
+    you want to log in with.
+
+    If you have your client configured with an organization prompt, then you
+    can optionally provide ORGANIZATION_ID here so you don't have to enter the
+    organization name in the web flow every time.  Note that this is the Auth0
+    organization identifier, not the lower-case name that you would enter in the
+    web flow.
     """
     load_dotenv(env_file)
 

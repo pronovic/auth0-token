@@ -1,3 +1,8 @@
+Version 0.3.0     unreleased
+
+	* Add support for $ORGANIZATION_ID when running retrieve.
+	* Clarify when $CONNECTION is needed when running retrieve.
+
 Version 0.2.0     13 Oct 2024
 
 	* Kill any leftover Firefox windows when running retrieve.

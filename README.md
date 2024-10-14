@@ -37,22 +37,45 @@ and then install using pipx:
 pipx install auth0_token-0.1.0-py3-none-any.whl
 ```
 
-Next, prepare an environment file (i.e. `envfile`) that describes your Auth0 configuration:
+Next, prepare an environment file (i.e. `envfile`) that describes your Auth0 configuration.  These are the required variables:
 
 ```bash
 BASE_URI = "https://my-tenant.us.auth0.com"
-CONNECTION = "my-db"
 AUDIENCE = "my-api-audience"
 CLIENT_ID = "my-client-id"
 CLIENT_SECRET = "my-client-secret"
 ```
 
-All of these things are easy to find in Auth0
+All of these values are easy to find in Auth0:
 
 - for `my-tenant`, substitute the name of your Auth0 tenant
-- for `my-db`, subtitute the name of your user database (under **Authentication > Database**)
 - for `my-api-audience`, substitute the _API Audience_ associated with your API (under **Applications > APIs**)
 - for `my-client-id` and `my-client-secret`, substitute the values from your application (under **Applications > Applications**)
+
+There are also two optional variables:
+
+```
+CONNECTION = "my-db"
+ORGANIZATION_ID = "my-organization-id"
+```
+
+If you have your client configured with an organization prompt (you've selected
+_Prompt for Organization_ on the application's **Organizations** tab), then the
+`CONNECTION` variable _must_ be omitted.
+
+If you have your client configured with exactly one authentication data source
+on the application's **Connections** tab, then the `CONNECTION` variable is
+optional.  Otherwise, specify the name of the authentication data source you
+want to log in with.  (Strictly speaking, Auth0 will pick a default
+authentication data source if you don't provide one, but it might not be the
+one you want.)
+
+If you have your client configured with an organization prompt (you've selected
+_Prompt for Organization_ on the application's **Organizations** tab), then you
+can optionally provide `ORGANIZATION_ID` here so you don't have to enter the
+organization name in the web flow every time.  Note that this is the Auth0
+organization identifier (like `org_xxxxxxxxxxxxxxxx`), not the lower-case name
+that you would enter in the web flow.
 
 Once your environment file exists, you can run the `retrieve` command, which looks
 like this:

@@ -3,6 +3,8 @@ from typing import Dict
 from urllib.parse import urlencode
 from uuid import uuid4
 
+import click
+
 SERVER = "localhost"
 PORT = 35000
 
@@ -26,8 +28,14 @@ def get_authorization_endpoint_params(state: str) -> Dict[str, str]:
         "state": state,
         "audience": os.getenv("AUDIENCE", default="AUDIENCE"),
     }
-    if os.getenv("CONNECTION", default=None):
-        params["connection"] = os.getenv("CONNECTION", default="CONNECTION")
+
+    if os.getenv("ORGANIZATION_ID", default=None):
+        if os.getenv("CONNECTION", default=None):
+            raise click.UsageError("Use either $ORGANIZATION_ID or $CONNECTION, not both")
+        params["organization"] = os.getenv("ORGANIZATION_ID", default="unset")
+    elif os.getenv("CONNECTION", default=None):
+        params["connection"] = os.getenv("CONNECTION", default="unset")
+
     return params
 
 
