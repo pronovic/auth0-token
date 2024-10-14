@@ -48,6 +48,12 @@ def retrieve(wait_sec: int, env_file: str) -> None:
     and then capture the access token out of the browser window.  Then quit
     Firefox.
 
+    Your Auth0 application (under Applications > Applications) must have the
+    following allowed redirect URL:
+
+        \b
+        http://localhost:35000/localtoken/callback
+
     The environment file must contain the following variables:
 
         \b
