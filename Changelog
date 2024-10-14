@@ -1,4 +1,4 @@
-Version 0.2.0     unreleased
+Version 0.2.0     13 Oct 2024
 
 	* Kill any leftover Firefox windows when running retrieve.
 	* Add notes about the redirect URL to help output for retrieve.
