@@ -12,7 +12,7 @@ the more frustrating things is that it can be hard to get a usable JWT.  Either
 you don't have a running web application yet, or the JWT isn't easily
 available, or you need a token for a user that can't easily log into the web
 application right now, etc.  There is `auth0 test token <client-id>`, but that
-isn't necessarily useful in all situations.
+isn't necessarily helpful in all situations.
 
 This is a quick-and-dirty workaround to that problem, inspired by
 the [auth-code-flow](https://pypi.org/project/auth-code-flow/0.2.0/) tutorial.
