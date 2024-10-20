@@ -19,7 +19,7 @@ jobs:
     secrets: inherit
     with:
       matrix-os-version: "[ 'ubuntu-latest' ]"
-      matrix-python-version: "[ '3.11', '3.12' ]"
+      matrix-python-version: "[ '3.11', '3.12', '3.13' ]"
       enable-coveralls: false 
   macos-build-and-test:
     name: "MacOS"
@@ -27,7 +27,7 @@ jobs:
     secrets: inherit
     with:
       matrix-os-version: "[ 'macos-latest' ]"
-      matrix-python-version: "[ '3.12' ]"  # only run MacOS tests on latest Python
+      matrix-python-version: "[ '3.13' ]"  # only run MacOS tests on latest Python
       enable-coveralls: false 
   release:
     name: "Release"
