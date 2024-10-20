@@ -1,4 +1,4 @@
-Version 0.3.1     unreleased
+Version 0.3.1     20 Oct 2024
 
 	* Add support for Python 3.13, no need to drop older versions.
 	* Upgrade to Poetry v1.8.4 for official Python 3.13 support.
