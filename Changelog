@@ -1,3 +1,7 @@
+Version 0.3.2     12 Dec 2024
+
+	* Allow "--env -" to use the environment directly.
+
 Version 0.3.1     20 Oct 2024
 
 	* Add support for Python 3.13, no need to drop older versions.
