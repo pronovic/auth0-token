@@ -80,19 +80,25 @@ def retrieve(wait_sec: int, env_file: str) -> None:
     organization name in the web flow every time.  Note that this is the Auth0
     organization identifier, not the lower-case name that you would enter in the
     web flow.
+
+    If you use "-" for the location of your envfile, then the expected variables
+    are assumed to be in your environment already and no envfile is sourced.
     """
-    load_dotenv(env_file)
+    server_args = {
+        "host": SERVER,
+        "port": PORT,
+        "log_level": "error",
+        "limit_max_requests": 1,
+    }
+
+    if env_file != "-":
+        server_args["env_file"] = env_file
+        load_dotenv(env_file)
 
     server = Process(
         target=uvicorn.run,
         args=["auth0token.api:APP"],
-        kwargs={
-            "host": SERVER,
-            "port": PORT,
-            "log_level": "error",
-            "env_file": env_file,
-            "limit_max_requests": 1,
-        },
+        kwargs=server_args,
         daemon=True,
     )
     server.start()
