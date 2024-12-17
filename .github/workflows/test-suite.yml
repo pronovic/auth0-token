@@ -32,7 +32,7 @@ jobs:
     name: "Release"
     if: github.ref_type == 'tag'
     uses: pronovic/gha-shared-workflows/.github/workflows/poetry-release.yml@v7
-    needs: [ linux-build-and-test, macos-build-and-test, windows-build-and-test ]
+    needs: [ linux-build-and-test, macos-build-and-test ]
     secrets: inherit
     with:
       publish-pypi: false
