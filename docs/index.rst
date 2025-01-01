@@ -7,7 +7,7 @@ Release v\ |version|
     :target: https://pypi.org/project/auth0-token/
 
 .. image:: https://img.shields.io/pypi/l/auth0-token.svg
-    :target: https://github.com/pronovic/auth0-token/blob/master/LICENSE
+    :target: https://github.com/pronovic/auth0-token/blob/main/LICENSE
 
 .. image:: https://img.shields.io/pypi/wheel/auth0-token.svg
     :target: https://pypi.org/project/auth0-token/
@@ -21,8 +21,8 @@ Release v\ |version|
 .. image:: https://readthedocs.org/projects/auth0-token/badge/?version=stable&style=flat
     :target: https://auth0-token.readthedocs.io/en/stable/
 
-.. image:: https://coveralls.io/repos/github/pronovic/auth0-token/badge.svg?branch=master
-    :target: https://coveralls.io/github/pronovic/auth0-token?branch=master
+.. image:: https://coveralls.io/repos/github/pronovic/auth0-token/badge.svg?branch=main
+    :target: https://coveralls.io/github/pronovic/auth0-token?branch=main
 
 Retrieves Auth0 JWT tokens using the Authorization Code flow
 
