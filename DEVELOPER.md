@@ -2,7 +2,7 @@
 
 ## Packaging and Dependencies
 
-This project uses [Poetry](https://python-poetry.org/) to manage Python packaging and dependencies.  Most day-to-day tasks are orchestrated through Poetry.
+This project uses [Poetry v2](https://python-poetry.org/) to manage Python packaging and dependencies.  Most day-to-day tasks are orchestrated through Poetry.
 
 A coding standard is enforced using [Black](https://pypi.org/project/black/), [isort](https://pypi.org/project/isort/) and [Pylint](https://pypi.org/project/pylint/).  Python 3 type hinting is validated using [MyPy](https://pypi.org/project/mypy/).
 
@@ -38,7 +38,7 @@ sure that you have a working Python 3 enviroment and install Poetry itself.
 
 ### Poetry Version
 
-The project is designed to work with Poetry >= 1.8.0.  If you already have an older
+The project is designed to work with Poetry >= 2.0.0.  If you already have an older
 version of Poetry installed on your system, upgrade it first.
 
 ### MacOS
@@ -57,14 +57,12 @@ Finally, install Poetry itself and then verify your installation:
 
 ```
 pipx install poetry
-pipx inject poetry poetry-dynamic-versioning
-pipx list --include-injected
 ```
 
 To upgrade this installation later, use:
 
 ```
-pipx upgrade --include-injected poetry
+pipx upgrade poetry
 ```
 
 ## Developer Tasks
@@ -139,7 +137,7 @@ Structure**, mark `src` as a source folder.  In the **Exclude
 Files** box, enter the following:
 
 ```
-LICENSE;NOTICE;PyPI.md;.coverage;.coveragerc;.github;.gitignore;.gitattributes;.htmlcov;.idea;.isort.cfg;.mypy.ini;.mypy_cache;.pre-commit-config.yaml;.pylintrc;.pytest_cache;.pytest.ini;.readthedocs.yml;.tabignore;build;dist;docs/_build;out;poetry.lock;poetry.toml;run;.run;.venv;.runtime;.coverage.lcov;.env*
+LICENSE;NOTICE;PyPI.md;build;dist;docs/_build;out;poetry.lock;poetry.toml;run;.coverage;.coverage.lcov;.coveragerc;.gitattributes;.github;.gitignore;.htmlcov;.idea;.mypy_cache;.poetry;.pre-commit-config.yaml;.pylintrc;.pytest_cache;.readthedocs.yml;.run;.tabignore;.venv;.env*
 ```
 
 When you're done, click **Ok**.  Then, go to the gear icon in the project panel 
