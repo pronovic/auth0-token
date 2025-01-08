@@ -55,8 +55,8 @@ types-psutil = "^6.0.0.20241011"
 
 [tool.black]
 line-length = 132
-target-version = ['py311', 'py312', 'py313' ]
-include = '(src\/scripts\/.*$|\.pyi?$)'
+target-version = [ 'py311', 'py312', 'py313' ]
+include = '\.pyi?$'
 exclude = '''
 /(
     \.git
