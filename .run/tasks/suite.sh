@@ -6,8 +6,10 @@ help_suite() {
 }
 
 task_suite() {
+   run_command pythonversion --short
    run_task install
    run_task checks
    run_task build
+   run_command pythonversion
 }
 
