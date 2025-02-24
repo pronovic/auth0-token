@@ -4,6 +4,7 @@ Version 0.3.5     unreleased
 	* Upgrade to poetry-dynamic-versioning v1.5.2 for minor fixes.
 	* Add .python-version in preferred order to support pyenv.
 	* Add Sphinx configuration path to .readthedocs.yml.
+	* Add a new 'scripted' command suitable for use with automation.
 
 Version 0.3.4     08 Jan 2025
 
