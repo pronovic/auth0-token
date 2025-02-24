@@ -45,8 +45,7 @@ def auth0token() -> None:
 )
 def retrieve(wait_sec: int, env_file: str) -> None:
     """
-    Retrieve an Auth0 JWT access token for an application and API, manually
-    interacting with Firefox to log in.
+    Manually retrieve an Auth0 JWT access token.
 
     This coordinates the OIDC Authorization Code flow, submitting the correct
     requests to Auth0 and handling the required callback interaction.  This is
@@ -54,9 +53,9 @@ def retrieve(wait_sec: int, env_file: str) -> None:
     endpoint and a private Firefox browser to handle the web UI aspects of the
     flow.
 
-    Run this command, wait for Firefox to start, log in with your credentials,
-    and then capture the access token out of the browser window.  Then quit
-    Firefox.
+    This command expects you to manually log into Auth0 via the browser window.
+    Wait for Firefox to start, log in with your credentials, and then capture
+    the access token out of the browser window.  Then quit Firefox.
 
     Your Auth0 application (under Applications > Applications) must have the
     following allowed redirect URL:
@@ -159,8 +158,7 @@ def retrieve(wait_sec: int, env_file: str) -> None:
 )
 def scripted(env_file: str) -> None:
     """
-    Retrieve an Auth0 JWT access token for an application and API, scripting
-    the login process via selenium.
+    Automatically retrieve an Auth0 JWT access token.
 
     This coordinates the OIDC Authorization Code flow, submitting the correct
     requests to Auth0 and handling the required callback interaction.  This is
@@ -168,7 +166,8 @@ def scripted(env_file: str) -> None:
     endpoint and a private Firefox browser to handle the web UI aspects of the
     flow.
 
-    When the command completes, the token will be dumped to stdout.
+    Interaction with the browser is scripted using selenium.  When the command
+    completes, the token will be dumped to stdout.
 
     Your Auth0 application (under Applications > Applications) must have the
     following allowed redirect URL:
