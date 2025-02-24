@@ -41,7 +41,7 @@ dependencies = [
   "python-dotenv (>=1.0.1,<2.0.0)",
   "click (>=8.1.7,<9.0.0)",
   "requests (>=2.32.3,<3.0.0)",
-  "psutil (>=6.0.0,<7.0.0)",
+  "psutil (>=7.0.0,<8.0.0)",
   "environs (>=14.1.1,<15.0.0)",
   "selenium (>=4.29.0,<5.0.0)",
 ]
@@ -53,12 +53,12 @@ repository = "https://github.com/pronovic/auth0-token"
 [tool.poetry.group.dev.dependencies]
 pylint = ">=3.0.1,<4.0.0"
 pre-commit = ">=4.0.1,<5.0.0"
-black = ">=24.2.0,<25.0.0"
+black = ">=25.1.0,<26.0.0"
 mypy = ">=1.6.0,<2.0.0"
-isort = ">=5.12.0,<6.0.0"
+isort = ">=6.0.0,<7.0.0"
 colorama = ">=0.4.6,<1.0.0"
 types-requests = ">=2.32.0.20240914,<3.0.0.0"
-types-psutil = ">=6.0.0.20241011,<7.0.0.0"
+types-psutil = ">=7.0.0.20250218,<8.0.0.0"
 
 [tool.poetry.scripts]
 auth0token = "auth0token.cli:auth0token"
