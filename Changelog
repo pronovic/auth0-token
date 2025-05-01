@@ -1,6 +1,6 @@
 Version 0.3.6     01 May 2025
 
-	* Upgrade h11 to 0.1.16 to address CVE-2025-43859.
+	* Upgrade h11 to 0.16.0 to address CVE-2025-43859.
 
 Version 0.3.5     24 Feb 2025
 
