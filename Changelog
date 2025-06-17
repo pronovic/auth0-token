@@ -1,4 +1,4 @@
-Version 0.3.7     unreleased
+Version 0.3.7     17 Jun 2025
 
 	* Update the requests dependency to address CVE-2024-47081.
 
