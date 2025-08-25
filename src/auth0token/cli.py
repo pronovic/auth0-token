@@ -121,12 +121,12 @@ def retrieve(wait_sec: int, env_file: str) -> None:
 
     # create a new Firefox profile for use by auth0 token
     cmdline = ["firefox", "-CreateProfile", "auth0token"]
-    create = Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)
+    create = Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)  # noqa: S603
     create.wait(5)
 
     # open a new private Firefox window specfically for use in the login flow
     cmdline = ["firefox", "-foreground", "-new-instance", "-P", "auth0token", "-private-window", get_authorization_endpoint()]
-    Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)
+    Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)  # noqa: S603
 
     # noinspection PyUnresolvedReferences
     # make MyPy happy; see https://github.com/pallets/click/issues/2626
