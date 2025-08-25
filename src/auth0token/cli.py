@@ -1,4 +1,3 @@
-# pylint: disable=consider-using-with:
 import os
 from multiprocessing import Process
 from subprocess import DEVNULL, Popen
