@@ -1,5 +1,4 @@
 import os
-from typing import Dict
 from urllib.parse import urlencode
 from uuid import uuid4
 
@@ -20,7 +19,7 @@ def get_authorization_endpoint() -> str:
     )
 
 
-def get_authorization_endpoint_params(state: str) -> Dict[str, str]:
+def get_authorization_endpoint_params(state: str) -> dict[str, str]:
     params = {
         "client_id": env.str("CLIENT_ID", default="CLIENT_ID"),
         "redirect_uri": env.str("REDIRECT_URI", default=f"http://{SERVER}:{PORT}/localtoken/callback"),
@@ -44,7 +43,7 @@ def get_access_token_endpoint() -> str:
     return env.str("BASE_URI", default="BASE_URI") + os.getenv("ACCESS_TOKEN_PATH", default="/oauth/token")
 
 
-def get_access_token_endpoint_params(code: str, state: str) -> Dict[str, str]:
+def get_access_token_endpoint_params(code: str, state: str) -> dict[str, str]:
     return {
         "code": code,
         "client_id": env.str("CLIENT_ID", default="CLIENT_ID"),

@@ -12,7 +12,7 @@ from environs import env
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC  # noqa: N812
 from selenium.webdriver.support.wait import WebDriverWait
 
 from auth0token.auth0 import PORT, SERVER, get_authorization_endpoint
@@ -121,12 +121,12 @@ def retrieve(wait_sec: int, env_file: str) -> None:
 
     # create a new Firefox profile for use by auth0 token
     cmdline = ["firefox", "-CreateProfile", "auth0token"]
-    create = Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)
+    create = Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)  # noqa: S603
     create.wait(5)
 
     # open a new private Firefox window specfically for use in the login flow
     cmdline = ["firefox", "-foreground", "-new-instance", "-P", "auth0token", "-private-window", get_authorization_endpoint()]
-    Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)
+    Popen(cmdline, close_fds=True, start_new_session=True, stdout=DEVNULL, stderr=DEVNULL)  # noqa: S603
 
     # noinspection PyUnresolvedReferences
     # make MyPy happy; see https://github.com/pallets/click/issues/2626
