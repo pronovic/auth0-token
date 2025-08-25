@@ -53,38 +53,14 @@ repository = "https://github.com/pronovic/auth0-token"
 [tool.poetry.group.dev.dependencies]
 pylint = ">=3.0.1,<4.0.0"
 pre-commit = ">=4.0.1,<5.0.0"
-black = ">=25.1.0,<26.0.0"
 mypy = ">=1.6.0,<2.0.0"
-isort = ">=6.0.0,<7.0.0"
 colorama = ">=0.4.6,<1.0.0"
 types-requests = ">=2.32.0.20240914,<3.0.0.0"
 types-psutil = ">=7.0.0.20250218,<8.0.0.0"
+ruff = "^0.12.10"
 
 [tool.poetry.scripts]
 auth0token = "auth0token.cli:auth0token"
-
-[tool.black]
-line-length = 132
-target-version = [ 'py311', 'py312', 'py313' ]
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | __pycache__
-  | \.tox
-  | \.venv
-  | \.poetry
-  | build
-  | dist
-  | docs
-  | notes
-)/
-'''
-
-[tool.isort]
-profile = "black"
-line_length = 132
-skip_glob = [ "docs", "notes", ".poetry" ]
 
 [tool.coverage.paths]
 source = [ "src" ]
@@ -101,6 +77,18 @@ precision = 1
 filterwarnings = [
     'error',  # turn all Python warnings into test failures, so they're hard to miss
 ]
+
+[tool.ruff]
+src = ["src"]
+extend-exclude = [ "docs", "notes", ".poetry" ]
+line-length = 132
+preview = true
+
+[tool.ruff.format]
+quote-style = "double"
+line-ending = "lf"
+docstring-code-format = true
+docstring-code-line-length = 80
 
 [tool.mypy]
 files = [ "src" ]
