@@ -3,7 +3,7 @@ Version 0.3.8     unreleased
 	* Adjust GHA build process to allow builds for stacked PRs.
 	* Update the MyPy configuration so we're using latest rules.
 	* Add a new `run clean` target to clean up generated data.
-	* Replace black and isort tools with the Ruff formatter.
+	* Replace black, isort, and pylint with the Ruff formatter and linter.
 	* Update the urllib3 transitive dependency to address CVE-2025-50181.
 	* Update the fastapi and starlette dependencies to address CVE-2025-54121.
 
