@@ -1,5 +1,6 @@
 Version 0.3.8     unreleased
 
+	* Adjust GHA build process to allow builds for stacked PRs.
 	* Update the urllib3 transitive dependency to address CVE-2025-50181.
 	* Update the fastapi and starlette dependencies to address CVE-2025-54121.
 
