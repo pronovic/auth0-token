@@ -5,6 +5,7 @@ Version 0.3.8     unreleased
 	* Add a new `run clean` target to clean up generated data.
 	* Replace black, isort, and pylint with the Ruff formatter and linter.
 	* Address Ruff linter warnings and modernize the code to 2025 standards.
+	* Remove unused docs directory, leftover from the cookiecutter template.
 	* Update all dependencies and outdated constraints.
 
 Version 0.3.7     17 Jun 2025

@@ -137,7 +137,7 @@ Structure**, mark `src` as a source folder.  In the **Exclude
 Files** box, enter the following:
 
 ```
-LICENSE;NOTICE;PyPI.md;build;dist;docs/_build;out;poetry.lock;poetry.toml;run;.coverage;.coverage.lcov;.coveragerc;.gitattributes;.github;.gitignore;.htmlcov;.idea;.mypy_cache;.poetry;.pre-commit-config.yaml;.pytest_cache;.python-version;.readthedocs.yml;.ruff_cache;.run;.tabignore;.venv;.env*
+LICENSE;NOTICE;PyPI.md;build;dist;out;poetry.lock;poetry.toml;run;.coverage;.coverage.lcov;.coveragerc;.gitattributes;.github;.gitignore;.htmlcov;.idea;.mypy_cache;.poetry;.pre-commit-config.yaml;.pytest_cache;.python-version;.ruff_cache;.run;.tabignore;.venv;.env*
 ```
 
 When you're done, click **Ok**.  Then, go to the gear icon in the project panel 
@@ -207,12 +207,6 @@ described below.
 |Output filters|`$FILE_PATH$:$LINE$`|
 
 ## Release Process
-
-### Documentation
-
-Documentation at [Read the Docs](https://auth0-token.readthedocs.io/en/stable/)
-is generated via a GitHub hook.  So, there is no formal release process for the
-documentation.
 
 ### Code
 
