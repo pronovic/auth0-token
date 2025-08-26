@@ -11,6 +11,7 @@ include = [
    { path='LICENSE', format='sdist' },
    { path='README.md', format='sdist' },
    { path='docs', format='sdist' },
+   { path='src/tests', format='sdist' },
 ]
 classifiers = [
    "Development Status :: 4 - Beta",
@@ -51,12 +52,12 @@ homepage = "https://pypi.org/project/auth0-token/"
 repository = "https://github.com/pronovic/auth0-token"
 
 [tool.poetry.group.dev.dependencies]
+ruff = ">=0.12.10,<1.0.0"
 pre-commit = ">=4.0.1,<5.0.0"
 mypy = ">=1.6.0,<2.0.0"
 colorama = ">=0.4.6,<1.0.0"
 types-requests = ">=2.32.0.20240914,<3.0.0.0"
 types-psutil = ">=7.0.0.20250218,<8.0.0.0"
-ruff = "^0.12.10"
 
 [tool.poetry.scripts]
 auth0token = "auth0token.cli:auth0token"
