@@ -84,6 +84,7 @@ Basic tasks:
 - run checks: Run the code checkers
 - run build: Build artifacts in the dist/ directory
 - run suite: Run the complete test suite, as for the GitHub Actions CI build
+- run clean: Clean the source tree
 
 Additional tasks:
 
