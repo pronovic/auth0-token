@@ -1,5 +1,6 @@
 Version 0.3.8     unreleased
 
+	* Remove `__all__ = []` from __init__.py.
 	* Adjust GHA build process to allow builds for stacked PRs.
 	* Update the MyPy configuration so we're using latest rules.
 	* Add a new `run clean` target to clean up generated data.
