@@ -177,7 +177,7 @@ described below.
 |Description|`Run the Ruff linter code checks`|
 |Group|`Developer Tools`|
 |Program|`$ProjectFileDir$/run`|
-|Arguments|`lint`|
+|Arguments|`ruff`|
 |Working directory|`$ProjectFileDir$`|
 |Synchronize files after execution|_Unchecked_|
 |Open console for tool outout|_Checked_|
