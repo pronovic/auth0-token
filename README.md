@@ -1,7 +1,6 @@
 # Auth0 JWT Token Utilities
 
 [![Test Suite](https://github.com/pronovic/auth0-token/workflows/Test%20Suite/badge.svg)](https://github.com/auth0-token/actions?query=workflow%3A%22Test+Suite%22)
-[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 
 _Developer documentation is found in [DEVELOPER.md](DEVELOPER.md).  See that
 file for notes about how the code is structured, how to set up a development
