@@ -1,5 +1,6 @@
 # Auth0 JWT Token Utilities
 
+[![license](https://img.shields.io/github/license/pronovic/auth0-token)](https://github.com/pronovic/auth0-token/blob/main/LICENSE)
 [![Test Suite](https://github.com/pronovic/auth0-token/workflows/Test%20Suite/badge.svg)](https://github.com/auth0-token/actions?query=workflow%3A%22Test+Suite%22)
 
 _Developer documentation is found in [DEVELOPER.md](DEVELOPER.md).  See that

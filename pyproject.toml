@@ -16,7 +16,7 @@ description = "Auth0 JWT token utilities"
 authors = [ { name="Kenneth J. Pronovici", email="pronovic@ieee.org" } ]
 license = "Apache-2.0"
 license-files = [ "LICENSE", "NOTICE" ]
-readme = "PyPI.md"
+readme = "README.md"
 dynamic = [ "version" ]
 classifiers = [
    "Programming Language :: Python :: 3",
