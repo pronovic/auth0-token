@@ -8,13 +8,15 @@ help_suite() {
 
 task_suite() {
    if [ "$1" == "-f" ]; then
-      run_command pythonversion --short
+      run_command pythonversion
+      run_task install
       run_task checks
    else
-      run_command pythonversion --short
+      run_command pythonversion
       run_task install
       run_task checks
       run_task build
+      echo ""
       run_command pythonversion
    fi
 }
