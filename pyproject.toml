@@ -83,7 +83,8 @@ source = [ "src/auth0token" ]
 
 [tool.coverage.report]
 show_missing = false
-precision = 1
+precision = 0
+omit = [ "src/tests/*" ]
 
 [tool.pytest.ini_options]
 filterwarnings = [
