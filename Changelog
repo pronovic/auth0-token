@@ -1,6 +1,7 @@
 Version 0.5.2     unreleased
 
 	* Add support for Visual Studio Code as an IDE.
+	* Address Dependabot warnings for requests, marshmallow, and urllib3.
 
 Version 0.5.1     29 Oct 2025
 
