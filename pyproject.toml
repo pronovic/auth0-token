@@ -86,7 +86,7 @@ show_missing = false
 precision = 0
 omit = [ "src/tests/*" ]
 
-[tool.pytest.ini_options]
+[tool.pytest]
 filterwarnings = [
     'error',  # turn all Python warnings into test failures, so they're hard to miss
 ]
