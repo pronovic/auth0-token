@@ -87,6 +87,7 @@ precision = 0
 omit = [ "src/tests/*" ]
 
 [tool.pytest]
+strict = true
 filterwarnings = [
     'error',  # turn all Python warnings into test failures, so they're hard to miss
 ]
