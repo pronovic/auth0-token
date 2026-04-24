@@ -3,9 +3,15 @@
 [![license](https://img.shields.io/github/license/pronovic/auth0-token)](https://github.com/pronovic/auth0-token/blob/main/LICENSE)
 [![Test Suite](https://github.com/pronovic/auth0-token/workflows/Test%20Suite/badge.svg)](https://github.com/auth0-token/actions?query=workflow%3A%22Test+Suite%22)
 
-_Developer documentation is found in [DEVELOPER.md](DEVELOPER.md).  See that
+_Note: as of December 2025, I no longer work professionally with Auth0, so I
+don't have any immediate need for this code, or any way to test changes to it.
+The general design should remain relevant, but the repo has been archived and
+is now read-only.  I won't be doing regular maintenance, like keeping
+dependencies up-to-date or migrating to newer versions of Python._
+
+Developer documentation is found in [DEVELOPER.md](DEVELOPER.md).  See that
 file for notes about how the code is structured, how to set up a development
-environment, etc._
+environment, etc.
 
 When you're developing a new web application that relies on JWT tokens, one of
 the more frustrating things is that it can be hard to get a usable JWT.  Either
